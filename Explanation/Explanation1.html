@@ -1,0 +1,120 @@
+<!--
+
+Web Service:
+-------------
+
+HTTP: Hyper Text Transfer Protocol
+
+HTTP : It is the communication between web browser (client machine) to web server (server machine)
+       -- Client (web page or web browser) giving the 'HTTP Request' to the web server. Then web server
+       -------- returns 'HTTP Response' to the client(web page or web browser)
+
+
+HTTPS : Hyper Text Transfer Protocol Secure
+
+HTTPS : It is similar to 'HTTP'.
+        -- In 'HTTP' the request is in open source.But here the request in 'encrypted' mode
+        -- It makes the data safe from the hackers
+        -- 'HTTPS' actually we use
+---------------------------------------------------------------------------------------------------------
+
+API's :
+        --- API = Application Programming Interface
+        --- We call 'Url' as 'API'.
+
+API's Types:
+
+        --- SOAP (Simple Object Access Protocol)
+        --- REST (Representational State Transfer)
+
+
+SOAP:
+
+        --- It is the older type. It have strict procedure
+        --- It passing the data in the 'XML' form
+        --- Syntax : Data will pass like:
+        <request>
+            <studentName> Rathesh </studentName>
+        </request>
+
+REST:
+
+        --- It is new type. We are using this
+        --- It passing the data in both 'XML' & 'Json' form
+        --- We are passing the data in 'Json' form only
+        --- Syntax : Data will pass like:
+        {
+            "studentName" : "Rathesh",
+            "Age" : 25
+        }
+
+REST Methods:
+CRUD: We are getting the 'response' in 'url' - from that we are doing these operations
+        --- Create [POST]
+        --- Retrieve [GET]
+        --- Update [PUT]
+        --- Delete [DELETE]
+        --- Patch [Partial Update]   --- Only some details, we can modify -- We are not using this much
+-----------------------------------------------------------------------------------------------------------
+
+
+Flow:
+        User -- In Frontend, He will give the data and submit -- That data will pass as the 'request'
+        ----- to the server -- If that 'request' is success, then it will fetch the data from the database
+        ----- and it gives that data as 'response' to the user. If that request is failure, then it will
+        ----- 'error' message as 'response' to the user.
+-----------------------------------------------------------------------------------------------------------
+
+
+request :
+---------
+
+        endpoint : http://127.0.0.1:8000/registrationApp/getData5?Rathesh
+        base url : http://127.0.0.1:8000
+        resource : registrationApp/getData5
+        parameter: Rathesh
+
+        Parameter We have two types:
+        --- path parameter -- /
+        --- Query parameter -- ?(optional)
+        But we are using 'path parameter' only
+---------------------------------------------------------------------------------------------------------
+
+
+Authentication:
+--------------
+
+Authentication: Before getting into the page, need to authenticate the website for security purpose
+1. Basic Auth : Username + Password
+2. Bearer Token : One time password, two-step verification
+3. 0 Auth 1.0(Older)
+        Open Authorization 2.0 (modern, goggle, facebook etc) --- It's like captcha or image verification
+----------------------------------------------------------------------------------------------------------
+
+
+Response Status:
+-----------------
+
+100-199 -- Informational response
+200-299 -- Successive response
+300-399 -- Re-directional response
+400-499 -- Client Error response
+500-599 -- Server Error response
+---------------------------------------------------------------------------------------------------------
+
+CSRF: Cross Site Request Forgery
+
+CSRF: It is used to prevent web attacks from the hacker through malicious websites
+
+      Example: You login your net banking in the trusted site. While login you are visiting the
+      --- Un-authorized websites.From that Un-authorized websites it sends money transfer request through
+      --------- cookies to your net banking website, without intimation money will transfer
+
+      --- Avoiding this issue, we are using 'CSRF'. 'CSRF' will create unique values on the forms
+      --------- When Un-authorized websites sends money transfer request through cookies, it will check
+      ------------- whether that cookies contains these 'CSRF' generated value. If same, then only it will
+      ---------------- transfer, if not, it won't execute that request.
+
+-----------------------------------------------------------------------------------------------------------
+
+-->

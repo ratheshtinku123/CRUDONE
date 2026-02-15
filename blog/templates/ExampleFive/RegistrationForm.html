@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Registration Form </title>
+</head>
+<body>
+    <form action="{% if id %} {% url 'update5' id %} {% else %} {% url 'post5' %} {% endif %}"
+          method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit"> Submit </button>
+    </form>
+</body>
+</html>

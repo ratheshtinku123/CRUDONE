@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title> Registration Table </title>
+    <style>
+        .custom th{
+            background-color: blueviolet;
+            border: 3px solid black;
+        }
+        .custom td{
+            background-color: slateblue;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center"> Task 5 -- Event Registration Management System: </h2>
+    <table class="table table-border table-dark text-center custom">
+        <thead>
+            <tr>
+                <th> Primary </th>
+                <th> Participant_Name </th>
+                <th> Email </th>
+                <th> Phone_Number </th>
+                <th> Event_Name </th>
+                <th> Registration_Status </th>
+                <th> Delete </th>
+                <th> Update </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+            <tr>
+                <td> {{data.id}} </td>
+                <td> {{data.Participant_Name}} </td>
+                <td> {{data.Email}} </td>
+                <td> {{data.Phone_Number}} </td>
+                <td> {{data.Event_Name}} </td>
+                <td> {{data.Registration_Status}} </td>
+                <td> <button> <a href="{% url 'delete5' data.id %}"> Delete </a></button></td>
+                <td> <button> <a href="{% url 'update5' data.id %}"> Update </a></button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'post5' %}"> Post </a>
+</body>
+</html>

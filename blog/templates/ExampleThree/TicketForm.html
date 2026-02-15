@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Ticket Form </title>
+</head>
+<body>
+    <form action="{% if id %} {% url 'update3' id %} {% else %} {% url 'post3' %} {% endif %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit"> Submit </button>
+    </form>
+</body>
+</html>

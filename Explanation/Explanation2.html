@@ -1,0 +1,110 @@
+<!--
+
+CRUD Functions: [Create, Retrieve, Update, Delete]
+---------------
+
+First : GET [Retrieve] -- It will show all your entered data in your database it will show you in the table
+        -- for 'Get' you don't required 'inner body' -- which means you don't need form
+
+Second : DELETE -- [Delete] -- It is used to 'delete' your data
+        -- Based on given 'id' that 'id' data will delete
+        -- for 'Delete' also you don't required 'inner body' -- which means you don't need form
+
+Third : POST [Create] -- It will 'create' new data
+        -- for 'Create' It requires inner body
+        -- In 'Create' -- We are doing two process
+        -- first process -- opening the form and filling the data
+        -- second process -- while submitting it will saving the data
+
+Fourth : PUT [Update] -- It will 'update' the existing data
+         -- for 'Update' It requires inner body
+         -- In 'Update' -- We are doing two process
+         -- first process -- opening the form and filling the data
+         -- second process -- while submitting it will saving the data
+         -- But, the difference between 'post' is, we have to give 'instance & id' here in 'update'
+----------------------------------------------------------------------------------------------------------
+
+
+Flow -- getMethod call -- open 'table.html' -- Click 'post' -- 'postMethod' call -- [first process execute]
+        -- open 'form.html' fill the data in forms -- while submitting [second process execute] -- It
+        -- saving the data. In 'forms.py' we connect to the 'model.py' so these data will automatically
+        -- stores in the 'table.html' -- When you give 'delete' -- that particular data 'id' passes
+        -- to the 'delete function' and it 'deletes' the data. When you give 'Update' -- it will call
+        -- 'updateMethod' -- [first process execute] open 'form.html' fill the data in forms --
+        -- while submitting [second process execute] -- Before saving the data, we are passing the
+        -- 'instance & id' if that instance and id is there, it's not created, but it will 'update' the data.
+-----------------------------------------------------------------------------------------------------------
+
+Step:1
+
+        Create one app Ex. crudApp, Inside 'crudApp' you find the 'models.py'
+    --- In 'models.py' define your table headers
+    --- In 'admin.py' register your 'models.py'
+    --- Create one 'templates' directory -- inside create one 'table.html' file
+    --- In 'table.html' you have to give your table formats like 'thead' and 'tdata'
+    --- Create one 'forms.py' inside your 'crudApp'
+    --- Inside 'forms.py' -- Here 'forms.py' we have to give different approach
+            -- you have to say 'class Meta' -- This is organizer
+            -- model = 'your models.py class name'
+            -- fields = '__all__' -- This fetch all details what you given in the 'table' it will come to
+                    -- your 'forms' also
+    --- Then, create one 'form.html' inside your 'templates'
+    --- Inside 'form.html' -- you have to give 'action & method' method = 'POST'
+    --- Inside 'form.html' -- We have to use {% csrf_token %} inside your <form>
+
+
+Step:2
+
+        -- In 'views' -- import your 'models.py' & 'forms.py' & 'redirect'
+        -- In views write the function for 'get'
+        -- In views write the function for 'post'
+                -- Part 1 - first it will open 'form.py'
+                -- Part 2 - When you give 'submit' it will save that data
+        -- In views write the function for 'delete'
+        -- In views write the function for 'update'
+                -- Part 1 - first it will open 'form.py'
+                -- Part 2 - When you give 'submit' it will save that data
+
+Step:3
+
+          -- In 'settings.py' -- register your 'crudApp name' & 'template name'
+          -- In blog 'urls.py' -- include your 'crudApp.url'
+          -- In your 'crudApp' -- create 'urls.py' -- Mention your 'function names'
+
+
+Step:4
+
+          -- Now, you want to connect with Database for that you have to write the command.
+          -- py manage.py makemigrations crudApp [after makemigrations give your app name]
+          -- py manage.py migrate
+          -- py manage.py createsuperuser
+          -- Enter username
+          -- Enter Mail Id
+          -- Enter Password
+          -- Confirm Password
+          -- py manage.py runserver --- http://127.0.0.1:8000/admin -- give this and login
+          -- Inside Database, Enter your data
+          -- for another 'app' you want to use in same 'project' again don't use 'createsuperuser'
+          -- you can directly access your database with your previous login and use
+---------------------------------------------------------------------------------------------------------
+
+Important Note:
+---------------
+
+          -- you filled the data in your 'model.py' -- when you seeing 127.00.8000/admin -- your table
+          ---- is not found -- that time, you have to give this command 'py manage.py makemigrations
+          ------- crudApp(your app name)'. Because it don't know the table where to add, that time
+          --------- You have to tell your 'app name'
+
+          -- When you giving this 'http://127.0.0.1:8000/crudApp/postData/crudApp/getData/' -- page not
+          ------ found 404 it shows -- In redirect you have to say your 'app name' before you have to give
+          --------- '/' like this --- return redirect (request,'/crudApp/getData/')
+
+          -- But in render don't use '/' before like --'return render(request,
+          ---------- 'ExampleFour/InventoryStockTable.html', {'datas': datas})'
+
+          -- Here in 'CRUD' we are passing two parameters in 'action'. Because 'post' and 'put' doing
+          ---------- the same operations. To show to the action specifically we are following this.
+
+---------------------------------------------------------------------------------------------------------
+-->

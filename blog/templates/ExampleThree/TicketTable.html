@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title> Ticket Table </title>
+    <style>
+        .custom th{
+            background-color: green;
+            border:3px solid black;
+
+        }
+        .custom td{
+            background-color: lightgreen;
+            color: black;
+            border:3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center"> Task 3 -- Customer Support Ticket System: </h2>
+    <table class="table table-border table-dark text-center custom">
+        <thead>
+            <tr>
+                <th> Primary </th>
+                <th> Customer_Name </th>
+                <th> Vehicle_No </th>
+                <th> Title </th>
+                <th> Description </th>
+                <th> Priority </th>
+                <th> Delete </th>
+                <th> Update </th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for detail in details %}
+            <tr>
+                <td> {{detail.id}} </td>
+                <td> {{detail.Customer_Name}} </td>
+                <td> {{detail.Vehicle_No}} </td>
+                <td> {{detail.Title}} </td>
+                <td> {{detail.Description}} </td>
+                <td> {{detail.Priority}} </td>
+                <td> <button> <a href="{% url 'delete3' detail.id %}"> Delete </a></button></td>
+                <td> <button> <a href="{% url 'update3' detail.id %}"> Update </a></button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'post3' %}"> Post </a>
+</body>
+</html>

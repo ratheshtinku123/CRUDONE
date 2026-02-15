@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title> ExpenseTable </title>
+    <style>
+        .custom td{
+            background-color: lightblue;
+            color: black;
+            border:3px solid black;
+        }
+        .custom th{
+            background-color: blue;
+            border:3px solid black;
+        }
+
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center"> Task 1 -- Daily Expense Tracker: </h2>
+<table class="table table-border table-dark text-center custom">
+    <thead>
+        <tr>
+            <th> Primary </th>
+            <th> Date </th>
+            <th> Amount </th>
+            <th> Category </th>
+            <th> Payment_Mode </th>
+            <th> Optional_Notes </th>
+            <th> Delete </th>
+            <th> Update </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in datas %}
+        <tr>
+            <td> {{data.id}} </td>
+            <td> {{data.Date}} </td>
+            <td> {{data.Amount}} </td>
+            <td> {{data.Category}} </td>
+            <td> {{data.Payment_Mode}} </td>
+            <td> {{data.Optional_Notes}} </td>
+            <td> <button> <a href="{% url 'del1' data.id %}"> Delete </a> </button></td>
+            <td> <button> <a href="{% url 'update1' data.id %}"> Update </a> </button></td>
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+<a href="{% url 'post1' %}"> Post </a>
+
+
+</body>
+</html>
